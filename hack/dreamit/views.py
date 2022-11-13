@@ -19,6 +19,9 @@ def contact(request):
         contact.save()
     return render(request, 'dreamit/contact.html')
 
+def about(request):
+    return render(request, "dreamit/about.html")
+
 def courses(request):
     allcourse = Course.objects.all()
     params = {'allcourse' : allcourse}
