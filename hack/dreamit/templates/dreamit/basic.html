@@ -25,12 +25,18 @@
 <body>
     <nav>
         <div class="container nav_container">
-            <h2><a href="#">DreamRealm</a></h2>
+            <h2><a href="/">DreamRealm</a></h2>
             <ul class="nav_menu">
-                <li><a href="#">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Courses</a></li>
+                <li><a href="/courses">Courses</a></li>
+
+                {% if user.is_authenticated %}
                 <li><a href="/contact">Contact Us</a></li>
+                {% else %}
+                <li><a href="/sign">Contact Us</a></li>
+                {% endif %}
+
                 <li><a href="/sign">Sign In</a></li>
             </ul>
             <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
@@ -40,7 +46,11 @@
 
     {% block body %} {% endblock %}
 
-
+    <script>
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('window-scroll', window.scrollY > 0)
+        });
+    </script>
     {% block js %} {% endblock %}
 
 </body>

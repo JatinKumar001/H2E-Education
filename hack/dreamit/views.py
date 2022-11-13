@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Contact
+from .models import Contact, Course, Chapters, SubCourse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -18,6 +18,22 @@ def contact(request):
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
     return render(request, 'dreamit/contact.html')
+
+def courses(request):
+    allcourse = Course.objects.all()
+    params = {'allcourse' : allcourse}
+    return render(request, 'dreamit/courses.html', params)
+
+def subcourse(request):
+    allsubcourse = SubCourse.objects.all()
+    params = {'allsubcourse' : allsubcourse}
+    return render(request, 'dreamit/subcourse.html', params)
+
+
+def chapter(request):
+    allchapter = Chapters.objects.all()
+    params = {'allchapter' : allchapter}
+    return render(request, "dreamit/chapter.html", params)
 
 def content(request):
     return render(request, 'dreamit/content.html')

@@ -11,7 +11,11 @@
             <h1>"The future belongs to those who believe in the beauty of their dreams"</h1>
             <p>Starting doesn't require greatness, but greatness requires starting. Start your exploration right away to discover the true possibilities.</p>
 
-            <a href="#" class="btn btn-primary">Get Started</a>
+            {% if user.is_authenticated %}
+            <a href="/courses" class="btn btn-primary">Get Started</a>
+            {% else %}
+            <a href="/sign" class="btn btn-primary">Get Started</a>
+            {% endif %}
         </div>
 
         <div class="header_right">
